@@ -1,0 +1,8 @@
+{% extends "index.html" %}
+{% block content %}
+    <h3><u> Are you sure you want to delete {{item.title}}? </u></h3>
+    <form action="{{url_for('delete_category_item', category_id=item.category_id, category_item_id=item.id)}}" method="POST">
+    <input type="submit", value = "Delete">
+    <a href = "{{ url_for('index_category_items', category_id=item.category_id)}}"> Cancel </a>
+    </form>
+{% endblock %}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Musical Instruments</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon"/>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,300,700">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Javascript files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/moment.min.js') }}"></script>
+
+    <script src="//apis.google.com/js/platform.js?onload=start"> </script>
+    <script>gapi.load('auth2', function() {auth2 = gapi.auth2.init({client_id: '159266619031-patv0uif386165igrnnrmt8clmfinv7s.apps.googleusercontent.com'});});</script>
+
+</head>
+<body>
+    <div class="container">
+        <div class='row'>
+            <div class='col-md-9'>
+                <h1><a href="{{url_for('index_categories')}}">Musical Instruments</a></h1>
+            </div>
+            {% if current_user.is_authenticated %}
+                <h5>Hi {{ current_user.name }}!</h5>
+                <div class='col-md-3'>
+                    <h5><button href="#" onclick="signOut('{{ current_user.provider }}');">Logout</button></h5>
+                </div>
+            {% else %}
+                <div class='col-md-3'>
+                    <div class='row'><div class='col-sm-12'><h5>Login with:</h5></div></div>
+                    <div class='row'>
+                        <div class='col-sm-2'><i class="fa fa-google" id="googleSignInButton" style="font-size:36px"></i></div>
+                        <div class='col-sm-2'><i class="fa fa-facebook-square" id="fbSignInButton" style="font-size:36px"></i></div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li><strong> {{message}} </strong></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+    <script>
+        var index_categories = "{{url_for('index_categories')}}";
+        var logout_url = "{{url_for('logout')}}";
+    </script>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+</html>

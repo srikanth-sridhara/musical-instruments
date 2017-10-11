@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block content %}
+    <h3><u>Edit a Category</u></h3>
+    <form action="{{url_for('edit_category', category_id=category_id)}}" method="POST">
+        <p>
+            Name: <input type="text" size="30" name="categoryname" value="{{category.name}}">
+            Description: <input type="text" size="30" name="categorydescription" value="{{category.description}}">
+            Image: <input type="text" size="30" name="categoryimage" value="{{category.image}}">
+            <input type="submit" value="Change">
+        </p>
+    </form>
+{% endblock %}

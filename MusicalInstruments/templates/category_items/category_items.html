@@ -1,0 +1,69 @@
+{% extends "index.html" %}
+{% block content %}
+    <div class="row">
+        <div class="thumbnail">
+            <img style="height: 250px; width: auto; display: block;" src="{{ category.image }}" data-holder-rendered="true">
+            <div class="caption">
+                <h3>{{category.name}}</h3>
+                <p>{{ category.description }}</p>
+            </div>
+        </div>
+    </div>
+
+    {% if not items %}
+        <p>There are currently no {{category.name}} added.</p>
+    {% endif %}
+
+    <main class="row">
+    {% for item in items %}
+        <article class="col-md-4 col-sm-6 col-sm-12">
+            <figure>
+                <a class="img-wrapper" data-toggle="modal" data-target="#myModal{{item.id}}" target="_blank">
+                    <img class="rounded center-block img-responsive img-fluid tile" src="{{item.image}}" alt="Project 2">
+                    <div class="image-text-layer">
+                        <div class="image-text">{{item.title}}</div>
+                    </div>
+                </a>
+                <figcaption class="row">
+                    <p>{{item.title}}</p>
+                    {% if current_user.is_authenticated and current_user.id == item.user_id %}
+                        <a class="item_edit_button" href="{{url_for('edit_category_item', category_id=category.id, category_item_id=item.id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        <a class="item_delete_button" href="{{url_for('delete_category_item', category_id=category.id, category_item_id=item.id)}}"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    {% endif %}
+                </figcaption>
+            </figure>
+        </article>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal{{item.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">{{item.title}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="thumbnail">
+                                <img style="height: 250px; width: auto; display: block;" src="{{ item.image }}" data-holder-rendered="true">
+                                <div class="caption">
+                                    <p>{{ item.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if current_user.is_authenticated and current_user.id == item.user_id %}
+                    <div class="modal-footer">
+                        <span class="pull-left"><a href="{{url_for('edit_category_item', category_id=category.id, category_item_id=item.id)}}"><button type="button" class="btn btn-primary">Edit</button></a></span>
+                        <a href="{{url_for('delete_category_item', category_id=category.id, category_item_id=item.id)}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </main>
+
+    {% if current_user.is_authenticated %}
+        <a class="above addButton btn btn-success" href="{{url_for('add_new_category_item', category_id=category.id)}}">+ Add a new Item</a>
+    {% endif %}
+{% endblock %}

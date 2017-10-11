@@ -1,0 +1,204 @@
+/* Fonts used */
+@font-face {
+  font-family: "Simplifica";
+  src: url(../fonts/SIMPLIFICA-Typeface.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url(../fonts/Raleway-Regular.ttf) format("truetype");
+}
+
+/* Styling the main elements */
+body {
+  z-index: 2;
+}
+
+h1 a {
+  color: black;
+}
+a:hover{
+  /*color: white;*/
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Simplifica", Verdana, Tahoma;
+  font-size: 80px;
+  z-index: 2;
+}
+
+h2 {
+  font-family: "Raleway", Verdana, Tahoma;
+  z-index: 2;
+}
+
+h3 {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: "Raleway", Verdana, Tahoma;
+  z-index: 2;
+}
+h4 {
+  text-align: center;
+}
+
+.container {
+  z-index: 2;
+}
+
+h3:before, h3:after {
+  flex-grow: 1;
+  height: 1px;
+  content: '\a0';
+  background-color: #ddd;
+  position: relative;
+  top: 0.5em;
+}
+
+h3:before {
+  margin-right: 10px;
+}
+
+h3:after {
+  margin-left: 10px;
+}
+
+/*/////////////////////////////////////////*/
+.image-block {
+  border: 3px solid white ;
+  background-color: black;
+  padding: 0px;
+  margin: 0px;
+  height:200px;
+  text-align: center;
+  vertical-align: bottom;
+}
+.image-block > p {
+  width: 100%;
+  height: 100%;
+  font-weight: normal;
+  font-size: 22px;
+  padding-top: 90px;
+  background-color: rgba(3,3,3,0.0);
+  color: rgba(6,6,6,0.0);
+  z-index: 2;
+}
+.image-block:hover > p {
+  background-color: rgba(3,3,3,0.8);
+  color: white;
+}
+.image-block > a {
+  font-weight: normal;
+  font-size: 22px;
+  background-color: rgba(3,3,3,0.0);
+  color: rgba(6,6,6,0.0);
+  z-index: 2;
+}
+.image-block:hover > a {
+  color: white;
+}
+.category_edit_button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+.category_delete_button {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+.latest_item_button {
+  margin-bottom: 5px;
+}
+
+/*/////////////////////////////////////////*/
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+.img-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  border: 1px solid gray;
+}
+.img-wrapper img {
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+  vertical-align: middle;
+  object-fit: cover;
+  max-height:150px;
+}
+@media (max-width:1200px) and (min-width:760px) {
+  .img-wrapper img {
+    max-height:120px;
+  }
+}
+.img-wrapper img:hover {
+  -webkit-transform:scale(1.5);
+  -moz-transform:scale(1.5);
+  -ms-transform:scale(1.5);
+  -o-transform:scale(1.5);
+  transform:scale(1.5);
+}
+
+.tile {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.image-text-layer {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.image-text {
+  color: black;
+  font-size: 25px;
+  font-family: "Raleway", Verdana, Tahoma;
+  font-weight: bold;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.img-wrapper:hover .tile {
+  opacity: 0.1;
+}
+
+.img-wrapper:hover .image-text-layer {
+  opacity: 1;
+}
+.item_delete_button {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}
+.item_edit_button {
+  position: absolute;
+  right: 35px;
+  bottom: 15px;
+}

@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block content %}
+    <h3><u>Add a new Category Item</u></h3>
+    <form action="{{url_for('add_new_category_item', category_id=category.id)}}" method="POST">
+        <p>
+            Name: <input type="text" size="30" name="itemtitle">
+            Description: <input type="text" size="30" name="itemdescription">
+            Image URL: <input type="text" size="30" name="itemimage">
+        </p>
+        <input type="submit" value="Create">
+    </form>
+{% endblock %}

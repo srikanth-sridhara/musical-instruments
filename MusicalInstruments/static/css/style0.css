@@ -1,0 +1,172 @@
+/* Fonts used */
+@font-face {
+  font-family: "Simplifica";
+  src: url(../fonts/SIMPLIFICA-Typeface.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url(../fonts/Raleway-Regular.ttf) format("truetype");
+}
+
+/* Styling the main elements */
+body {
+  background-color: turquoise;
+}
+
+figcaption {
+  text-align: center;
+  font-family: "Raleway", Verdana, Tahoma;
+}
+
+article {
+  margin-bottom: 15px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Simplifica", Verdana, Tahoma;
+  font-size: 80px;
+}
+
+h2 {
+  font-family: "Raleway", Verdana, Tahoma;
+}
+
+h3 {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: "Raleway", Verdana, Tahoma;
+}
+
+h3:before, h3:after {
+  flex-grow: 1;
+  height: 1px;
+  content: '\a0';
+  background-color: #ddd;
+  position: relative;
+  top: 0.5em;
+}
+
+h3:before {
+  margin-right: 10px;
+}
+
+h3:after {
+  margin-left: 10px;
+}
+
+/* Styling the individual classes */
+.container {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+}
+
+.logo {
+  width: 200px;
+  margin: auto;
+  display: block;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.img-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  border: 1px solid gray;
+}
+
+.img-wrapper img {
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+  vertical-align: middle;
+}
+
+.img-wrapper img:hover {
+  -webkit-transform:scale(1.5);
+  -moz-transform:scale(1.5);
+  -ms-transform:scale(1.5);
+  -o-transform:scale(1.5);
+  transform:scale(1.5);
+}
+
+.tile {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.image-text-layer {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.image-text {
+  color: black;
+  font-size: 25px;
+  font-family: "Raleway", Verdana, Tahoma;
+  font-weight: bold;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.img-wrapper:hover .tile {
+  opacity: 0.1;
+}
+
+.img-wrapper:hover .image-text-layer {
+  opacity: 1;
+}
+
+.overlay {
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url(../img/main_image.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 250px;
+  position: relative;
+}
+
+.overlay h2 {
+  font-family: "Simplifica", Verdana, Tahoma;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 60px;
+  transform: translate(-50%, -50%);
+}
